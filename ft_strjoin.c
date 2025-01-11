@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 21:18:40 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/10 22:15:57 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/11 20:36:47 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ char	*join_args(char **av, char *str)
     i = 1;
     while (av[i])
     {
-        temp = str;
-        str = ft_strjoin(str, " ");
+        temp = ft_strjoin(av[i], " ");
+		str = ft_strjoin(str, temp);
         free(temp);
         if (!str)
             return (NULL);
