@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 20:57:54 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/21 20:33:21 by ilel-hla         ###   ########.fr       */
+/*   Created: 2025/01/21 20:30:35 by ilel-hla          #+#    #+#             */
+/*   Updated: 2025/01/22 21:14:42 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -44,6 +47,11 @@ size_t	ft_strlen_stack(char **s);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(const char *s1);
 void	ft_putstr(const char *str, int fd);
+int		ft_strcmp(char *s1, char *s2);
+char	*get_next_line(int fd);
+int		initialize_stacks(char **av, t_list **stack_a);
+void	ft_give_index(t_list **stack);
+char	*ft_strchr(char *s, int c);
 
 // actoins
 void	ft_pa(t_list **stack_a, t_list **stack_b, int i);
@@ -58,15 +66,17 @@ void	ft_rra(t_list **stack_a, int i);
 void	ft_rrb(t_list **stack_b, int i);
 void	ft_rrr(t_list **stack_a, t_list **stack_b, int i);
 
-// algo
+// Sorting functions
+void	sort_stack(t_list **stack_a, t_list **stack_b);
 void	sort_two(t_list **stack);
 void	sort_three(t_list **stack);
 void	sort_five(t_list **stack_a, t_list **stack_b);
-void	sort_stack(t_list **stack_a, t_list **stack_b);
-int		is_sorted(t_list *stack);
-void	ft_give_index(t_list **stack);
 void	sort_pivot(t_list **stack_a, t_list **stack_b);
-int		find_position(t_list **stack_a, int target_index);
-void	sort_pivot_b(t_list **stack_a, t_list **stack_b);
+int		is_sorted(t_list *stack);
+
+// Algorithm functions
+void	last_element(t_list **stack_a, t_list **last);
+void	ft_pa_rb(t_list **stack_a, t_list **stack_b,
+			int content, t_list **last);
 
 #endif

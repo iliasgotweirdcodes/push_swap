@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:47:19 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/10 22:14:45 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/21 20:58:27 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap_bonus.h"
 
 size_t	ft_countwords(char *s, char c)
 {
@@ -31,8 +31,11 @@ size_t	ft_countwords(char *s, char c)
 	return (count);
 }
 
-char	**ft_free(char **str, int i)
+char	**ft_free(char **str)
 {
+	int	i;
+
+	i = 0;
 	if (str)
 	{
 		while (i >= 0)
@@ -45,7 +48,7 @@ char	**ft_free(char **str, int i)
 	return (NULL);
 }
 
-char	**ft_alloc(char **str, char *s, char c)
+char	**ft_allocation(char **str, char *s, char c)
 {
 	size_t	i;
 	size_t	j;
@@ -61,9 +64,9 @@ char	**ft_alloc(char **str, char *s, char c)
 		end = start;
 		while (s[end] != c && s[end])
 			end++;
-		str[i] = ft_strdup(ft_substr(s, start, end - start));
+		str[i] = (char *)malloc(sizeof(char) * (end - start + 1));
 		if (!str[i])
-			return (NULL);
+			return (ft_free(str), NULL);
 		j = 0;
 		while (start < end)
 			str[i][j++] = s[start++];
@@ -74,15 +77,19 @@ char	**ft_alloc(char **str, char *s, char c)
 	return (str);
 }
 
-char **ft_split(char *s, char c)
+char	**ft_split(char *s, char c)
 {
-	char **str;
+	char		**str;
+	size_t		len;
 
 	if (!s)
 		return (NULL);
-	str = (char **)malloc((ft_countwords(s, c) + 1) * sizeof(char *));
+	len = ft_countwords(s, c) + 1;
+	str = (char **)malloc(len * sizeof(char *));
 	if (!str)
 		return (NULL);
-	str = ft_alloc(str, s, c);
+	str = ft_allocation(str, s, c);
+	if (!str)
+		return (ft_free(str), NULL);
 	return (str);
 }

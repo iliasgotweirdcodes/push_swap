@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   rotate_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:51:31 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/10 21:30:43 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/21 20:58:55 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap_bonus.h"
 
 void	ft_ra(t_list	**stack_a, int i)
 {
 	t_list	*tmp;
 	t_list	*last;
+
 	if (!(*stack_a))
 		return ;
 	tmp = *stack_a;
 	*stack_a = (*stack_a)->next;
 	last = *stack_a;
-	while(last->next)
+	while (last->next)
 		last = last->next;
 	last->next = tmp;
 	tmp->next = NULL;
 	if (i)
 		ft_putstr("ra\n", 1);
-
 }
+
 void	ft_rb(t_list **stackb, int i)
 {
-	t_list *tmp;
-	t_list *last;
+	t_list	*tmp;
+	t_list	*last;
 
 	if (!(*stackb) || !(*stackb)->next)
-		return;
+		return ;
 	tmp = *stackb;
 	*stackb = (*stackb)->next;
 	last = *stackb;
@@ -46,6 +47,7 @@ void	ft_rb(t_list **stackb, int i)
 	if (i)
 		ft_putstr("rb\n", 1);
 }
+
 void	ft_rr(t_list **stack_a, t_list **stack_b, int i)
 {
 	ft_ra(&(*stack_a), 0);

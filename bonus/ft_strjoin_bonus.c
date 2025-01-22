@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 21:18:40 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/11 20:36:47 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/21 20:58:34 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap_bonus.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {
@@ -42,29 +42,26 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*join_args(char **av, char *str)
 {
-    char    *temp;
-    int     i;
+	char	*temp;
+	int		i;
+	char	*new_str;
 
-    str = ft_strdup("");
-    if (!str)
-        return (NULL);
-    i = 1;
-    while (av[i])
-    {
-        temp = ft_strjoin(av[i], " ");
-		str = ft_strjoin(str, temp);
-        free(temp);
-        if (!str)
-            return (NULL);
-		if (av[i + 1])
-		{
-			temp = str;
-			str = ft_strjoin(temp, " ");
-			free(temp);
-		}
-        if (!str)
-            return (NULL);
-        i++;
-    }
-    return (str);
+	str = ft_strdup("");
+	if (!str)
+		return (NULL);
+	i = 1;
+	while (av[i])
+	{
+		temp = ft_strjoin(av[i], " ");
+		if (!temp)
+			return (free(str), NULL);
+		new_str = ft_strjoin(str, temp);
+		free (str);
+		free(temp);
+		if (!new_str)
+			return (NULL);
+		str = new_str;
+		i++;
+	}
+	return (str);
 }

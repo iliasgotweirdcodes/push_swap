@@ -6,11 +6,12 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:16:44 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/10 15:19:44 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/21 20:56:03 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
+
 void	ft_add_node(t_list **stack_a, int content, int index)
 {
 	t_list	*new_node;
@@ -18,7 +19,7 @@ void	ft_add_node(t_list **stack_a, int content, int index)
 
 	new_node = malloc(sizeof(t_list));
 	if (!new_node)
-		return;
+		return ;
 	new_node->content = content;
 	new_node->i = index;
 	new_node->next = NULL;
@@ -32,6 +33,7 @@ void	ft_add_node(t_list **stack_a, int content, int index)
 		tmp->next = new_node;
 	}
 }
+
 int	ft_lstsize(t_list *lst)
 {
 	int	size;

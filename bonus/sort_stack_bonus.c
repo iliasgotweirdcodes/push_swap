@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   sort_stack_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 14:49:48 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/10 15:03:18 by ilel-hla         ###   ########.fr       */
+/*   Created: 2025/01/10 20:25:34 by ilel-hla          #+#    #+#             */
+/*   Updated: 2025/01/21 20:59:03 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap_bonus.h"
 
-void	ft_putstr(const char *str, int fd)
+void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
-	if (str)
+	int	size_a;
+
+	size_a = ft_lstsize(*stack_a);
+	ft_give_index(stack_a);
+	if (is_sorted(*stack_a))
+		return ;
+	if (size_a == 2)
+		sort_two(stack_a);
+	else if (size_a == 3)
+		sort_three(stack_a);
+	else if (size_a == 5)
+		sort_five(stack_a, stack_b);
+	else if (is_sorted(*stack_a) == 0)
 	{
-		write(fd, str, ft_strlen(str));
+		sort_pivot(stack_a, stack_b);
 	}
 }
-

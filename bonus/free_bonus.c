@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:09:24 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/10 22:25:10 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/21 20:58:16 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap_bonus.h"
 
 void	free_stack(t_list **stack)
 {
 	t_list	*temp;
 
+	if (!stack || !(*stack))
+		return ;
 	while (*stack)
 	{
 		temp = (*stack)->next;
 		free(*stack);
-		*stack = temp;
+		(*stack) = temp;
 	}
-	*stack = NULL;
+	stack = NULL;
 }
 
 void	ft_free_when_error(t_list **stack, char **str)
 {
-	(void)stack ;
 	int	i;
 
 	if (str)
@@ -50,7 +51,10 @@ void	ft_clean(char **str)
 	int	i;
 
 	i = 0;
-	while(str[i])
-		free(str[i++]);
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
 	free (str);
 }

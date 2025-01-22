@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 21:17:50 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/10 22:19:26 by ilel-hla         ###   ########.fr       */
+/*   Created: 2025/01/10 14:49:48 by ilel-hla          #+#    #+#             */
+/*   Updated: 2025/01/21 20:56:22 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-char	*ft_strdup(const char *s1)
-{
-	int		i;
-	size_t	len;
-	char	*src;
-	char	*dst;
+#include "../push_swap.h"
 
-	i = 0;
-	len = ft_strlen(s1);
-	dst = malloc(len + 1);
-	src = (char *)s1;
-	if (!dst)
-		return (NULL);
-	while (src[i])
+void	ft_putstr(const char *str, int fd)
+{
+	if (str)
 	{
-		dst[i] = src[i];
-		i++;
+		write(fd, str, ft_strlen(str));
 	}
-	dst[i] = '\0';
-	// free((void *)s1);
-	return (dst);
 }

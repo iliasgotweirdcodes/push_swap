@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_stack.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 20:25:34 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/10 21:41:31 by ilel-hla         ###   ########.fr       */
+/*   Created: 2025/01/05 17:06:27 by ilel-hla          #+#    #+#             */
+/*   Updated: 2025/01/21 20:56:07 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void handle_small_stacks(t_list **stack_a)
+size_t	ft_strlen(const char *s)
 {
-    int size_a = ft_lstsize(*stack_a);
+	size_t	i;
 
-    if (size_a == 2)
-    {
-        sort_two(stack_a);
-    }
-    else if (size_a == 3)
-    {
-        sort_three(stack_a);
-    }
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
+size_t	ft_strlen_stack(char **s)
+{
+	size_t	i;
 
-
-
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
