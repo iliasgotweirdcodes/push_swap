@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 21:43:43 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/22 23:12:29 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/23 20:32:16 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,29 @@ void	last_element(t_list **stack_a, t_list **last)
 		*last = (*last)->next;
 }
 
-void	ft_rb_rrb(t_list **stack_a, t_list **stack_b, int content, t_list **last)
+void	ft_rb_rrb(t_list **stacka, t_list **stackb, int content, t_list **last)
 {
-	if (find_position(stack_b, (*stack_a)->i - 1) > ft_lstsize(*stack_b) / 2)
+	if (find_position(stackb, (*stacka)->i - 1) > ft_lstsize(*stackb) / 2)
 	{
-		if (((*last)->i < (*stack_b)->i || (*last)->i == content))
+		if (((*last)->i < (*stackb)->i || (*last)->i == content))
 		{
-			ft_pa(stack_a, stack_b, 1);
-			ft_ra(stack_a, 1);
-			last_element(stack_a, last);
+			ft_pa(stacka, stackb, 1);
+			ft_ra(stacka, 1);
+			last_element(stacka, last);
 		}
-		else if (stack_b)
-			ft_rrb(stack_b, 1);
+		else if (stackb)
+			ft_rrb(stackb, 1);
 	}
 	else
 	{
-		if ((*last)->i < (*stack_b)->i || (*last)->i == content)
+		if ((*last)->i < (*stackb)->i || (*last)->i == content)
 		{
-			ft_pa(stack_a, stack_b, 1);
-			ft_ra(stack_a, 1);
-			last_element(stack_a, last);
+			ft_pa(stacka, stackb, 1);
+			ft_ra(stacka, 1);
+			last_element(stacka, last);
 		}
-		else if (stack_b)
-			ft_rb(stack_b, 1);
+		else if (stackb)
+			ft_rb(stackb, 1);
 	}
 }
 
@@ -60,8 +60,8 @@ void	sort_pivot(t_list **stack_a, t_list **stack_b)
 			ft_pb(stack_a, stack_b, 1);
 		else
 			ft_ra(stack_a, 1);
-		if ((*stack_b) && ft_lstsize(*stack_b) > 1
-			&& ((*stack_b)->i >= last_pivot && (*stack_b)->i) >= pivot_two)
+		if (ft_lstsize(*stack_b) > 1 && ((*stack_b)->i >= last_pivot
+				&& (*stack_b)->i >= pivot_two))
 			ft_rb(stack_b, 1);
 		if (ft_lstsize(*stack_b) == pivot_one)
 		{
