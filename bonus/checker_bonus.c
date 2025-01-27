@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 20:30:02 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/22 23:29:17 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:52:38 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,31 @@ void	reading(t_list **stack_a, t_list **stack_b)
 	}
 }
 
+void f(void)
+{
+	system("leaks checker");
+}
+
 int	main(int ac, char **av)
 {
+	// atexit(f);
 	t_list	*stack_a;
 	t_list	*stack_b;
+	int		i;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (1 == ac || (2 == ac && !av[1]) || !ft_strcmp(av[1], ""))
+	if (ac < 2)
+		return (0);
+	(1) && (i = 1, stack_a = NULL, stack_b = NULL);
+	while (ac > i)
 	{
-		ft_putstr("Error\n", 2);
-		exit (1);
+		if (is_empty(av[i++]))
+		{
+			write(2, "Error\n", 6);
+			exit (1);
+		}
 	}
-	if (!initialize_stacks(av, &stack_a))
-	{
-		free_stack(&stack_a);
-		exit (1);
-	}
+	if (!initialize_stack(av, &stack_a))
+		return (1);
 	reading(&stack_a, &stack_b);
 	if (is_sorted(stack_a) && stack_b == NULL)
 		ft_putstr("OK\n", 1);

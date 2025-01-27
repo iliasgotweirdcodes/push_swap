@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 20:37:13 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/22 20:37:21 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:28:42 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	is_space(char *str)
 	return (0);
 }
 
-int	initialize_stacks(char **av, t_list **stack_a)
+int	initialize_stack(char **av, t_list **stack_a)
 {
 	char	*str;
 	char	**split_av;

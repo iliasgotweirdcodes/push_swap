@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 20:30:35 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/23 22:27:05 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:42:17 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ char	*ft_strdup(const char *s1);
 void	ft_putstr(const char *str, int fd);
 int		ft_strcmp(char *s1, char *s2);
 char	*get_next_line(int fd);
-int		initialize_stacks(char **av, t_list **stack_a);
+int		is_empty(char *str);
+int		initialize_stack(char **av, t_list **stack_a);
 void	ft_give_index(t_list **stack);
 char	*ft_strchr(char *s, int c);
 void	ft_pa(t_list **stack_a, t_list **stack_b, int i);
@@ -64,9 +65,12 @@ void	sort_stack(t_list **stack_a, t_list **stack_b);
 void	sort_two(t_list **stack);
 void	sort_three(t_list **stack);
 void	sort_five(t_list **stack_a, t_list **stack_b);
+int		find_position(t_list **stack_a, int index);
 void	sort_pivot(t_list **stack_a, t_list **stack_b);
+void	sort_pivot_b(t_list **stack_a, t_list **stack_b);
 int		is_sorted(t_list *stack);
 void	last_element(t_list **stack_a, t_list **last);
 void	ft_rb_rrb(t_list **stacka, t_list **stackb, int content, t_list **last);
+void	last_element(t_list **stack_a, t_list **last);
 
 #endif

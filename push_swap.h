@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 20:57:54 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/23 22:27:19 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:42:34 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,9 @@ void	sort_stack(t_list **stack_a, t_list **stack_b);
 int		is_sorted(t_list *stack);
 void	ft_give_index(t_list **stack);
 void	sort_pivot(t_list **stack_a, t_list **stack_b);
-int		find_position(t_list **stack_a, int target_index);
 void	sort_pivot_b(t_list **stack_a, t_list **stack_b);
+int		find_position(t_list **stack_a, int target_index);
 void	ft_rb_rrb(t_list **stacka, t_list **stackb, int content, t_list **last);
+void	last_element(t_list **stack_a, t_list **last);
 
 #endif

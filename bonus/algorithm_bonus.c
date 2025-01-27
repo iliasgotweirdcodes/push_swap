@@ -6,43 +6,17 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 21:43:43 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/23 21:15:31 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:19:49 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
 void	last_element(t_list **stack_a, t_list **last)
 {
 	*last = (*stack_a);
 	while ((*last)->next)
 		*last = (*last)->next;
-}
-
-void	ft_rb_rrb(t_list **stacka, t_list **stackb, int content, t_list **last)
-{
-	if (find_position(stackb, (*stacka)->i - 1) > ft_lstsize(*stackb) / 2)
-	{
-		if (((*last)->i < (*stackb)->i || (*last)->i == content))
-		{
-			ft_pa(stacka, stackb, 1);
-			ft_ra(stacka, 1);
-			last_element(stacka, last);
-		}
-		else if (stackb)
-			ft_rrb(stackb, 1);
-	}
-	else
-	{
-		if ((*last)->i < (*stackb)->i || (*last)->i == content)
-		{
-			ft_pa(stacka, stackb, 1);
-			ft_ra(stacka, 1);
-			last_element(stacka, last);
-		}
-		else if (stackb)
-			ft_rb(stackb, 1);
-	}
 }
 
 void	sort_pivot(t_list **stack_a, t_list **stack_b)
@@ -73,18 +47,44 @@ void	sort_pivot(t_list **stack_a, t_list **stack_b)
 	sort_three(stack_a);
 	sort_pivot_b(stack_a, stack_b);
 }
+void push_and_rotate(t_list **stack_a, t_list **stack_b, t_list **last , int content)
+{
+	if ((*last)->i < (*stack_b)->i || (*last)->i == content)
+	{
+		ft_pa(stack_a, stack_b, 1);
+		ft_ra(stack_a, 1);
+		last_element(stack_a, last);
+	}
+}
+void	ft_rb_rrb(t_list **stacka, t_list **stackb, int content, t_list **last)
+{
+	if (find_position(stackb, (*stacka)->i - 1) > ft_lstsize(*stackb) / 2)
+	{
+		if ((*last)->i < (*stackb)->i || (*last)->i == content)
+		push_and_rotate(stacka, stackb, last, content);
+		else if (stackb)
+			ft_rrb(stackb, 1);
+	}
+	else
+	{
+		if ((*last)->i < (*stackb)->i || (*last)->i == content)
+		push_and_rotate(stacka, stackb, last, content);
+		else if (stackb)
+			ft_rb(stackb, 1);
+	}
+}
 
 void	sort_pivot_b(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*tmp;
-	int		content;
+	int		index;
 
 	last_element(stack_a, &tmp);
-	content = tmp->i;
+	index = tmp->i;
 	while (stack_b)
 	{
 		while ((*stack_b) && (*stack_b)->i + 1 != (*stack_a)->i)
-			ft_rb_rrb(stack_a, stack_b, content, &tmp);
+			ft_rb_rrb(stack_a, stack_b, index, &tmp);
 		while (*stack_b && (*stack_b)->i == (*stack_a)->i - 1)
 			ft_pa(stack_a, stack_b, 1);
 		if ((*stack_a)->i -1 == tmp->i)

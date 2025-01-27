@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:57:19 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/23 18:54:18 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:44:21 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,14 @@ int	initialize_stack(char **av, t_list **stack_a)
 	ft_clean(split_av);
 	return (*stack_a != NULL);
 }
+void f(void)
+{
+	system("leaks push_swap");
+}
 
 int	main(int ac, char **av)
 {
+	// atexit(f);
 	t_list	*stack_a;
 	t_list	*stack_b;
 	int		i;
