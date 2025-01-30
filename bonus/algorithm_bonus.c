@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 21:43:43 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/26 17:19:49 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/30 18:00:45 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	sort_pivot(t_list **stack_a, t_list **stack_b)
 	sort_three(stack_a);
 	sort_pivot_b(stack_a, stack_b);
 }
-void push_and_rotate(t_list **stack_a, t_list **stack_b, t_list **last , int content)
+
+void	ft_pa_ra(t_list **stack_a, t_list **stack_b, t_list **last, int content)
 {
 	if ((*last)->i < (*stack_b)->i || (*last)->i == content)
 	{
@@ -56,19 +57,20 @@ void push_and_rotate(t_list **stack_a, t_list **stack_b, t_list **last , int con
 		last_element(stack_a, last);
 	}
 }
+
 void	ft_rb_rrb(t_list **stacka, t_list **stackb, int content, t_list **last)
 {
 	if (find_position(stackb, (*stacka)->i - 1) > ft_lstsize(*stackb) / 2)
 	{
 		if ((*last)->i < (*stackb)->i || (*last)->i == content)
-		push_and_rotate(stacka, stackb, last, content);
+			ft_pa_ra(stacka, stackb, last, content);
 		else if (stackb)
 			ft_rrb(stackb, 1);
 	}
 	else
 	{
 		if ((*last)->i < (*stackb)->i || (*last)->i == content)
-		push_and_rotate(stacka, stackb, last, content);
+			ft_pa_ra(stacka, stackb, last, content);
 		else if (stackb)
 			ft_rb(stackb, 1);
 	}

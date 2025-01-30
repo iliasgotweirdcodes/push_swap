@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 20:30:02 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/27 18:52:38 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/30 19:42:03 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,8 @@ void	reading(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-void f(void)
-{
-	system("leaks checker");
-}
-
 int	main(int ac, char **av)
 {
-	// atexit(f);
 	t_list	*stack_a;
 	t_list	*stack_b;
 	int		i;
