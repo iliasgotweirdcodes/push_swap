@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 20:30:35 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/01/30 18:44:43 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/01/30 20:39:09 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <limits.h>
 
 typedef struct s_list
